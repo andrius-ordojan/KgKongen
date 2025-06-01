@@ -1,7 +1,5 @@
 import re
-from requests_html import HTMLSession, HTMLResponse
-
-from typing import cast
+from requests_html import HTMLSession
 
 URL = "https://www.kodbilen.dk/varer/kalv-og-koedkvaeg/"
 
