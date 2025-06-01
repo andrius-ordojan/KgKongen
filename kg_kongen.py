@@ -1,11 +1,9 @@
 import re
 from requests_html import HTMLSession
 
-URL = "https://www.kodbilen.dk/varer/kalv-og-koedkvaeg/"
 
-
-def find_page_count(session):
-    r = session.get(URL, verify=False)
+def find_page_count(session, url):
+    r = session.get(url, verify=False)
 
     nav = r.html.find("nav.jet-woo-builder-shop-pagination", first=True)
 
@@ -74,10 +72,14 @@ def get_item_details(session, url):
 
 
 def main():
+    URL = "https://www.kodbilen.dk/varer/carnivore/"
+    URL = "https://www.kodbilen.dk/varer/dagstilbud/"
+    URL = "https://www.kodbilen.dk/varer/kalv-og-koedkvaeg/"
+
     session = HTMLSession()
 
     item_links = []
-    page_count = find_page_count(session)
+    page_count = find_page_count(session, URL)
     for page in range(1, page_count + 1):
         r = session.get(
             f"{URL}/page/{page}/",
@@ -119,9 +121,16 @@ def main():
 def test(url):
     session = HTMLSession()
     res = get_item_details(session, url)
-    print(res)
+    print(
+        {
+            "url": url,
+            "weight": res["weight"],
+            "price": res["price"],
+            "price_per_kg": res["price"] / res["weight"],
+        }
+    )
 
 
 if __name__ == "__main__":
-    # test("https://www.kodbilen.dk/vare/oeko-bavette")
+    # test("https://www.kodbilen.dk/vare/oekologisk-hakket-oksekoed-20-25-frost/")
     main()
