@@ -4,17 +4,12 @@ KgKongen is a meat price scraper for kodbilen.dk, built to help you find the low
 
 ## What it does:
 
-Crawls the website regularly
-
-Extracts product names, prices, and weights
-
-Calculates the price per kg
-
-Ranks the cheapest meat deals
-
-Optionally outputs to JSON, CSV, or a terminal-friendly table
+1. Crawls https://www.kodbilen.dk/varer/kalv-og-koedkvaeg/
+2. Find all links to products.
+3. Gets price for largest volume order.
+4. Normalizes the price to per kilogram.
+5. Presents top 5 cheapest options.
 
 ## Why?
 
 Because meat is expensive and you're a savvy carnivore.
-
