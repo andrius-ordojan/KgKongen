@@ -1,0 +1,10 @@
+[project]
+name = "kgkongen"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "lxml[html-clean]>=5.4.0",
+    "requests-html>=0.10.0",
+]
